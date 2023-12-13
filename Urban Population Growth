@@ -1,0 +1,30 @@
+import pandas as pd
+import matplotlib.pyplot as plt
+
+# Create a DataFrame
+data = {'Country': ['Bangladesh', 'China', 'India', 'United States'],
+        '1960': [5.1, 17.5, 17.5, 63.0],
+        '1970': [10.3, 20.8, 21.7, 73.7],
+        '1980': [15.3, 26.4, 25.9, 78.6],
+        '1990': [20.0, 33.8, 29.6, 81.5],
+        '2000': [25.2, 40.5, 32.7, 83.4],
+        '2010': [29.7, 49.2, 34.9, 86.8],
+        '2020': [38.1, 58.5, 38.1, 88.4]}
+df = pd.DataFrame(data)
+
+# Create a line graph
+plt.figure(figsize=(10, 6))
+for country in df['Country'].unique():
+    data = df[df['Country'] == country]
+    years = data.index.to_numpy()
+    urban_pop = data['1960'].to_numpy()
+    for i in range(1, len(data)):
+        urban_pop = np.append(urban_pop, data.iloc[i]['1960'])
+    plt.plot(years, urban_pop, label=country)
+
+plt.xlabel('Year')
+plt.ylabel('Urban Population (%)')
+plt.title('Urban Population Growth in Selected Countries (1960-2020)')
+plt.legend()
+plt.grid(True)
+plt.show()
