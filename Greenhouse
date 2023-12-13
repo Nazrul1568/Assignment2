@@ -1,0 +1,21 @@
+import pandas as pd
+import matplotlib.pyplot as plt
+
+# Load the data
+df = pd.read_csv('greenhouse_gas_emissions.csv')
+
+# Extract the data for each country
+countries = ['China', 'United States', 'India']
+years = range(1990, 2016)
+
+for country in countries:
+    data = df[df['Country'] == country]
+    emissions = data['Emissions']
+    years = data['Year']
+
+    # Create a bar graph
+    plt.bar(years, emissions)
+    plt.xlabel('Year')
+    plt.ylabel('Greenhouse Gas Emissions (MTCO2e)')
+    plt.title(f'Greenhouse Gas Emissions of {country} from 1990 to 2015')
+    plt.show()
