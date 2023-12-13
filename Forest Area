@@ -1,0 +1,14 @@
+import pandas as pd
+import matplotlib.pyplot as plt
+
+# Create a DataFrame
+data = {'Country': ['Bangladesh', 'Brazil', 'China', 'India', 'Sweden'],
+        'Forest Area (%)': [17.0, 61.4, 22.9, 24.5, 68.7]}
+df = pd.DataFrame(data)
+
+# Create a bar graph
+plt.bar(df['Country'], df['Forest Area (%)'])
+plt.xlabel('Country')
+plt.ylabel('Forest Area (%)')
+plt.title('Forest Area in Selected Countries')
+plt.show()
